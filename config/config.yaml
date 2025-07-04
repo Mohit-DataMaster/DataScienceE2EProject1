@@ -1,0 +1,11 @@
+artifacts_root: artifacts
+
+data_ingestion:
+    root_dir: artifacts/data_ingestion
+    project_source_file: data/winequality-red.csv
+    project_raw_file: artifacts/data_ingestion/winequality.csv
+
+data_validation:
+    root_dir: artifacts/data_validation
+    data_file: artifacts/data_ingestion/winequality.csv
+    STATUS_FILE: artifacts/data_validation/status.txt

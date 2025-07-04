@@ -16,7 +16,7 @@ class DataValidation:
 
             with open(self.config.STATUS_FILE, "w") as f:
                 f.write(f"Validation status:\n")
-
+            flag = True
             for col in all_cols:
                 if col not in all_schema:
                     validation_status = False
@@ -29,10 +29,13 @@ class DataValidation:
                         with open(self.config.STATUS_FILE, "a") as f:
                             f.write(f"Validation status for {col}: {validation_status}, Column Datatype validation: {Datatype_status}\n")
                     else:
+                        flag = False
                         validation_status = True
                         Datatype_status = False
                         with open(self.config.STATUS_FILE, "a") as f:
                             f.write(f"Validation status for {col}: {validation_status}, Column Datatype validation: {Datatype_status}\n")
+            with open(self.config.STATUS_FILE, "a") as f:
+                f.write(f"[Status] Complete Validation Check: {flag}\n\n")
             return validation_status
         
         except Exception as e:
